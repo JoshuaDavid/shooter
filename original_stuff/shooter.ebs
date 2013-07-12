@@ -1,0 +1,1703 @@
+'
+'
+'
+'	C:\Documents and Settings\Debbie Ma\My Documents\My Documents\Research\Shooter General\Shooter E-Prime\shooter.ebs
+'	Generated on: 2/22/2010	14:49:17
+'
+'
+'	This file generated with E-Studio interface.
+'	E-Prime Copyright © 2002 Psychology Software Tools.
+'	ALL RIGHTS RESERVED
+
+'	Legal use of this experiment script requires a full E-Prime or Runtime License.
+'
+'
+'	Author:
+'		  (University of Chicago)
+'
+'
+'
+'
+
+Option CStrings On
+Dim ebContext as Context
+
+
+'--------------------------------------------------------------------------
+' Class Declarations
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+'InitSlideStateDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideStateDefaults(theSlideState As SlideState)
+
+	If theSlideState Is Nothing Then Exit Sub
+
+	theSlideState.X = "center"
+	theSlideState.Y = "center"
+	theSlideState.Width = "100%"
+	theSlideState.Height = "100%"
+	theSlideState.BackColor = CColor("white")
+	theSlideState.BackStyle = "opaque"
+	theSlideState.BorderColor = CColor("black")
+	theSlideState.BorderWidth = CLng("0")
+	theSlideState.XAlign = "center"
+	theSlideState.YAlign = "center"
+	theSlideState.ClearAfter = CLogical("No")
+	theSlideState.Enabled = CLogical("Yes")
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideVisualStimDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideVisualStimDefaults(theSlideVisualStim As SlideVisualStim)
+
+	If theSlideVisualStim Is Nothing Then Exit Sub
+
+	theSlideVisualStim.X = "center"
+	theSlideVisualStim.Y = "center"
+	theSlideVisualStim.Width = "25%"
+	theSlideVisualStim.Height = "25%"
+	theSlideVisualStim.ForeColor = CColor("black")
+	theSlideVisualStim.BackColor = CColor("white")
+	theSlideVisualStim.BackStyle = "opaque"
+	theSlideVisualStim.BorderColor = CColor("black")
+	theSlideVisualStim.BorderWidth = CLng("0")
+	theSlideVisualStim.XAlign = "center"
+	theSlideVisualStim.YAlign = "center"
+	theSlideVisualStim.AlignHorizontal = "center"
+	theSlideVisualStim.AlignVertical = "center"
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideTextDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideTextDefaults(theSlideText As SlideText)
+
+	If theSlideText Is Nothing Then Exit Sub
+
+	InitSlideVisualStimDefaults theSlideText
+
+	theSlideText.WordWrap = True
+	theSlideText.FontName = "Courier New"
+	theSlideText.FontSize = "18"
+	theSlideText.FontBold = CLogical("Yes")
+	theSlideText.FontItalic = CLogical("No")
+	theSlideText.FontUnderline = CLogical("No")
+	theSlideText.FontStrikeout = CLogical("No")
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideImageDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideImageDefaults(theSlideImage As SlideImage)
+
+	If theSlideImage Is Nothing Then Exit Sub
+
+	InitSlideVisualStimDefaults theSlideImage
+
+	theSlideImage.Stretch = CLogical("No")
+	theSlideImage.MirrorLeftRight = CLogical("No")
+	theSlideImage.MirrorUpDown = CLogical("No")
+	theSlideImage.UseSourceColorKey = CLogical("No")
+	theSlideImage.SourceColorKey = CColor("black")
+
+End Sub
+
+'--------------------------------------------------------------------------
+'InitSlideSoundBufferDefaults
+'--------------------------------------------------------------------------
+Sub InitSlideSoundBufferDefaults(theSoundBuffer As SoundBuffer)
+
+	If theSoundBuffer Is Nothing Then Exit Sub
+
+	theSoundBuffer.Loop = CLogical("No")
+	theSoundBuffer.StopAfter = CLogical("Yes")
+	theSoundBuffer.StartOffset = "0"
+	theSoundBuffer.StopOffset = "0"
+
+End Sub
+
+
+
+
+
+
+
+
+
+'--------------------------------------------------------------------------
+'InitTextDisplayDefaults
+'--------------------------------------------------------------------------
+Sub InitTextDisplayDefaults(theTextDisplay As TextDisplay)
+
+	If theTextDisplay Is Nothing Then Exit Sub
+
+	theTextDisplay.X = "center"
+	theTextDisplay.Y = "center"
+	theTextDisplay.Width = "100%"
+	theTextDisplay.Height = "100%"
+	theTextDisplay.ForeColor = CColor("black")
+	theTextDisplay.BackColor = CColor("white")
+	theTextDisplay.BackStyle = "opaque"
+	theTextDisplay.BorderColor = CColor("black")
+	theTextDisplay.BorderWidth = CLng("0")
+	theTextDisplay.XAlign = "center"
+	theTextDisplay.YAlign = "center"
+	theTextDisplay.AlignHorizontal = "center"
+	theTextDisplay.AlignVertical = "center"
+	theTextDisplay.WordWrap = True
+	theTextDisplay.ClearAfter = CLogical("No")
+	theTextDisplay.FontName = "Courier New"
+	theTextDisplay.FontSize = "18"
+	theTextDisplay.FontBold = CLogical("Yes")
+	theTextDisplay.FontItalic = CLogical("No")
+	theTextDisplay.FontUnderline = CLogical("No")
+	theTextDisplay.FontStrikeout = CLogical("No")
+
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+'--------------------------------------------------------------------------
+' Instance Declarations
+'--------------------------------------------------------------------------
+Dim Display As DisplayDevice
+Dim Sound As SoundDevice
+Dim Keyboard As KeyboardDevice
+Dim Mouse As MouseDevice
+Dim SessionProc As Procedure
+
+Dim Subpixlst As List
+
+Dim TrialProc As Procedure
+
+Dim Pix1 As Slide
+Dim Pix1_State As SlideState
+Dim Pix1_SlideImage As SlideImage
+
+Dim Pix2 As Slide
+Dim Pix2_State As SlideState
+Dim Pix2_SlideImage As SlideImage
+
+Dim Pix3 As Slide
+Dim Pix3_State As SlideState
+Dim Pix3_SlideImage As SlideImage
+
+Dim PreTargetPix As Slide
+Dim PreTargetPix_State As SlideState
+Dim PreTargetPix_SlideImage As SlideImage
+
+Dim TargetPix As Slide
+Dim TargetPixEchoClients As EchoClientCollection
+Dim TargetPix_State As SlideState
+Dim TargetPix_SlideImage As SlideImage
+
+Dim ITI As TextDisplay
+
+Dim Fixation As TextDisplay
+
+Dim Feedback As FeedbackDisplay
+Dim Feedback_State As SlideState
+Dim Feedback_SlideText As SlideText
+Dim Feedback_SlideSoundOut As SlideSoundOut
+Dim Feedback_SoundBuffer As SoundBuffer
+Dim Feedback_SoundBufferInfo As SoundBufferInfo
+
+Dim endscreen As TextDisplay
+Dim endscreenEchoClients As EchoClientCollection
+
+Dim BetweenScreen As TextDisplay
+Dim BetweenScreenEchoClients As EchoClientCollection
+
+Dim Pixlst1 As List
+
+Dim Instructions1 As TextDisplay
+Dim Instructions1EchoClients As EchoClientCollection
+
+Dim WaitforInstruct As TextDisplay
+Dim WaitforInstructEchoClients As EchoClientCollection
+
+Dim Intructions1Pt2 As TextDisplay
+Dim Intructions1Pt2EchoClients As EchoClientCollection
+
+Dim PixlstPractice1 As List
+
+
+
+'--------------------------------------------------------------------------
+' Package Declare Script
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+' User Script
+'--------------------------------------------------------------------------
+dim numFillerPix as integer
+
+dim setpoints as integer
+
+dim Points as integer
+
+dim TrialCounter as integer
+
+
+'--------------------------------------------------------------------------
+' Package Global Script
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+' Package Routines
+'--------------------------------------------------------------------------
+
+
+
+'--------------------------------------------------------------------------
+' Implementation
+'--------------------------------------------------------------------------
+Sub SessionProc_Run(c as Context)
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - SetPoints BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	Points = 0
+
+TrialCounter = 0
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - SetPoints END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	
+	WaitforInstruct.InputMasks.Reset
+	
+	WaitforInstructEchoClients.RemoveAll
+	WaitforInstruct.InputMasks.Add Keyboard.CreateInputMask("{SPACE}", "", CLng(WaitforInstruct.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	WaitforInstruct.Run
+	
+	
+	Instructions1.InputMasks.Reset
+	
+	Instructions1EchoClients.RemoveAll
+	Instructions1.InputMasks.Add Keyboard.CreateInputMask("{SPACE}", "", CLng(Instructions1.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	Instructions1.Run
+	
+	
+	Intructions1Pt2.InputMasks.Reset
+	
+	Intructions1Pt2EchoClients.RemoveAll
+	Intructions1Pt2.InputMasks.Add Keyboard.CreateInputMask("{SPACE}", "", CLng(Intructions1Pt2.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	Intructions1Pt2.Run
+	PixlstPractice1.Run c
+	
+	
+	BetweenScreen.InputMasks.Reset
+	
+	BetweenScreenEchoClients.RemoveAll
+	BetweenScreen.InputMasks.Add Keyboard.CreateInputMask("{SPACE}", "", CLng(BetweenScreen.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	BetweenScreen.Run
+	Pixlst1.Run c
+	
+	
+	endscreen.InputMasks.Reset
+	
+	endscreenEchoClients.RemoveAll
+	endscreen.InputMasks.Add Keyboard.CreateInputMask("q", "", CLng(endscreen.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	endscreen.Run
+
+	c.Log
+End Sub
+
+Sub TrialProc_Run(c as Context)
+	
+	Fixation.Run
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - InLine1 BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	numFillerPix = random(2,4)
+
+c.SetAttrib "NumPixDisp", numFillerPix
+
+c.SetAttrib "pix1duration", random (500,1000)
+c.SetAttrib "pix2duration", random (500,1000)
+c.SetAttrib "pix3duration", random (500,1000)
+c.SetAttrib "pretarduration", random (500,1000)
+
+TrialCounter = TrialCounter + 1
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - InLine1 END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	
+	Select Case Pix1.ActiveState
+		Case "Default"
+
+
+			Set Pix1_SlideImage = CSlideImage(Pix1.States.Item("Default").Objects(1))
+			Pix1_SlideImage.Filename = c.GetAttrib("Pix1")
+			Pix1_SlideImage.Load
+			Set Pix1_SlideImage = Nothing
+	End Select
+
+	Pix1.Duration = CLng(c.GetAttrib("pix1duration"))
+	Pix1.Run
+	
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - InLine4 BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	if numFillerPix = 2 then
+	goto EndPix 
+end if
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - InLine4 END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	
+	Select Case Pix2.ActiveState
+		Case "Default"
+
+
+			Set Pix2_SlideImage = CSlideImage(Pix2.States.Item("Default").Objects(1))
+			Pix2_SlideImage.Filename = c.GetAttrib("Pix2")
+			Pix2_SlideImage.Load
+			Set Pix2_SlideImage = Nothing
+	End Select
+
+	Pix2.Duration = CLng(c.GetAttrib("pix2duration"))
+	Pix2.Run
+	
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - InLine2 BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	if numFillerPix = 3 then 
+	goto EndPix
+end if 
+
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - InLine2 END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	
+	Select Case Pix3.ActiveState
+		Case "Default"
+
+
+			Set Pix3_SlideImage = CSlideImage(Pix3.States.Item("Default").Objects(1))
+			Pix3_SlideImage.Filename = c.GetAttrib("Pix3")
+			Pix3_SlideImage.Load
+			Set Pix3_SlideImage = Nothing
+	End Select
+
+	Pix3.Duration = CLng(c.GetAttrib("pix3duration"))
+	Pix3.Run
+	
+	
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	'	Label - EndPix BEGIN
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+EndPix:
+	If Err.Number = ebInputAccepted Then
+		Err.Clear
+		Resume EndPixResume
+	ElseIf Err.Number <> 0 Then
+		'NOTE: If you receive a runtime error here, it
+		' is because a runtime error other than ebInputAccepted
+		' was thrown (ebInputAccepted for catching input masks that jump).
+		'You are encouraged to either handle the error so that
+		' it is not thrown in the future or will have to set up
+		' your own error handler, which will also need to take
+		' into account for any input masks that jump.
+		'
+		'Raise the error so the default error handler will show the message
+		Err.Raise Err.Number
+	End If
+
+EndPixResume:
+
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	'	Label - EndPix END
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+	
+	
+	Select Case PreTargetPix.ActiveState
+		Case "Default"
+
+
+			Set PreTargetPix_SlideImage = CSlideImage(PreTargetPix.States.Item("Default").Objects(1))
+			PreTargetPix_SlideImage.Filename = c.GetAttrib("PreTargetPix")
+			PreTargetPix_SlideImage.Load
+			Set PreTargetPix_SlideImage = Nothing
+	End Select
+
+	PreTargetPix.Duration = CLng(c.GetAttrib("pretarduration"))
+	PreTargetPix.Run
+	
+	
+	
+	Select Case TargetPix.ActiveState
+		Case "Default"
+
+
+			Set TargetPix_SlideImage = CSlideImage(TargetPix.States.Item("Default").Objects(1))
+			TargetPix_SlideImage.Filename = c.GetAttrib("TargetPix")
+			TargetPix_SlideImage.Load
+			Set TargetPix_SlideImage = Nothing
+	End Select
+
+	
+	TargetPix.InputMasks.Reset
+	
+	TargetPixEchoClients.RemoveAll
+	TargetPix.InputMasks.Add Keyboard.CreateInputMask("qp", c.GetAttrib("Decision"), CLng(TargetPix.Duration), CLng("1"), ebEndResponseActionTerminate, CLogical("Yes"), "", "", "ResponseMode:All ProcessBackspace:Yes")
+
+	
+	TargetPix.Run
+	
+	c.SetAttrib "TargetPix.ACC", TargetPix.ACC
+	c.SetAttrib "TargetPix.RT", TargetPix.RT
+	c.SetAttrib "TargetPix.RESP", TargetPix.RESP
+	c.SetAttrib "TargetPix.CRESP", TargetPix.CRESP
+	
+	
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - Points BEGIN
+	'''''''''''''''''''''''''''''''''''''''''''''
+	'Add or subtract points based on accuracy.
+
+If TargetPix.RESP = "p" and c.GetAttrib("Decision") = "p" then 
+	Points = Points + 5 
+ElseIf TargetPix.RESP = "q" and c.GetAttrib("Decision") = "q" then 
+	Points = Points + 10
+ElseIf TargetPix.RESP = "q" and c.GetAttrib("Decision") = "p" then 
+	Points = Points - 20
+ElseIf TargetPix.RESP = "p" and c.GetAttrib("Decision") = "q" then 
+	Points = Points - 40
+ElseIf TargetPix.RESP = "" and c.GetAttrib("Decision") = "q" then 
+	Points = Points - 10
+ElseIf TargetPix.RESP = "" and c.GetAttrib("Decision") = "p" then 
+	Points = Points - 10
+End If
+
+c.SetAttrib "temppoints", Points
+	'''''''''''''''''''''''''''''''''''''''''''''
+	' InLine - Points END
+	'''''''''''''''''''''''''''''''''''''''''''''
+	
+	
+	
+	If TargetPix.ACC = 1 Then
+		'Set the ActiveState to Correct
+		Feedback.ActiveState = "Correct"
+
+		'Add an observation to the accuracy stats
+		Feedback.AccStats.AddObservation TargetPix.Acc
+
+		'Add an observation to the response time stats
+		' unless the user did not respond and the author
+		' does not want us to add the no response RT
+		If Len(TargetPix.RESP) > 0 Then
+			Feedback.RTStats.AddObservation TargetPix.RT
+			Feedback.CorrectRTStats.AddObservation TargetPix.RT
+		End If
+	Else
+		'Is it incorrect or no response?
+		If Len(TargetPix.RESP) > 0 Then
+			'Set the ActiveState to Incorrect
+			Feedback.ActiveState = "Incorrect"
+
+			'Set the accuracy stats
+			Feedback.AccStats.AddObservation TargetPix.Acc
+
+			'Set the RT stats
+			Feedback.RTStats.AddObservation TargetPix.RT
+			Feedback.IncorrectRTStats.AddObservation TargetPix.RT
+		Else
+			'Set the ActiveState to NoResponse
+			Feedback.ActiveState = "NoResponse"
+
+			'Does the author want to consider a NoResponse
+			' to sum as an incorrect response in the ACC stats?
+			If Feedback.CollectNoRespACCStats = True Then
+				Feedback.AccStats.AddObservation TargetPix.Acc
+			End If
+		End If
+	End If
+
+	Select Case Feedback.ActiveState
+		Case "Correct"
+
+
+			Set Feedback_SlideSoundOut = CSlideSoundOut(Feedback.States.Item("Correct").Objects(1))
+			Set Feedback_SoundBuffer = Feedback_SlideSoundOut.Buffers(1)
+			Set Feedback_SoundBuffer = Nothing
+			Set Feedback_SlideSoundOut = Nothing
+
+			Set Feedback_SlideText = CSlideText(Feedback.States.Item("Correct").Objects(2))
+			Feedback_SlideText.Text = "Correct!\n\n\n\n\n" &_ 
+				c.GetAttrib("temppoints")
+			Set Feedback_SlideText = Nothing
+		Case "Incorrect"
+
+
+			Set Feedback_SlideSoundOut = CSlideSoundOut(Feedback.States.Item("Incorrect").Objects(1))
+			Set Feedback_SoundBuffer = Feedback_SlideSoundOut.Buffers(1)
+			Set Feedback_SoundBuffer = Nothing
+			Set Feedback_SlideSoundOut = Nothing
+
+			Set Feedback_SlideText = CSlideText(Feedback.States.Item("Incorrect").Objects(2))
+			Feedback_SlideText.Text = "Incorrect!\n\n\n" &_ 
+				c.GetAttrib("temppoints")
+			Set Feedback_SlideText = Nothing
+		Case "NoResponse"
+
+
+			Set Feedback_SlideSoundOut = CSlideSoundOut(Feedback.States.Item("NoResponse").Objects(1))
+			Set Feedback_SoundBuffer = Feedback_SlideSoundOut.Buffers(1)
+			Set Feedback_SoundBuffer = Nothing
+			Set Feedback_SlideSoundOut = Nothing
+
+			Set Feedback_SlideText = CSlideText(Feedback.States.Item("NoResponse").Objects(2))
+			Feedback_SlideText.Text = "Too slow!\n\n\n" &_ 
+				c.GetAttrib("temppoints")
+			Set Feedback_SlideText = Nothing
+		Case "Pending"
+
+	End Select
+
+	
+
+	Feedback.Run
+
+	
+	
+	ITI.Run
+	
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	'	Label - TrialFinish BEGIN
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+TrialFinish:
+	If Err.Number = ebInputAccepted Then
+		Err.Clear
+		Resume TrialFinishResume
+	ElseIf Err.Number <> 0 Then
+		'NOTE: If you receive a runtime error here, it
+		' is because a runtime error other than ebInputAccepted
+		' was thrown (ebInputAccepted for catching input masks that jump).
+		'You are encouraged to either handle the error so that
+		' it is not thrown in the future or will have to set up
+		' your own error handler, which will also need to take
+		' into account for any input masks that jump.
+		'
+		'Raise the error so the default error handler will show the message
+		Err.Raise Err.Number
+	End If
+
+TrialFinishResume:
+
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	'	Label - TrialFinish END
+	''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+	c.SetAttrib "TargetPix.ACC", TargetPix.ACC
+	c.SetAttrib "TargetPix.RT", TargetPix.RT
+	c.SetAttrib "TargetPix.RESP", TargetPix.RESP
+	c.SetAttrib "TargetPix.CRESP", TargetPix.CRESP
+	
+
+	c.Log
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'--------------------------------------------------------------------------
+' InitDevices
+'
+'--------------------------------------------------------------------------
+Sub InitDevices(c As Context)
+
+
+
+	SetOSThreadPriority 3
+
+
+	Set Display = New DisplayDevice
+	Display.Name = "Display"
+
+	Dim DisplayDisplayDeviceInfo As DisplayDeviceInfo
+	DisplayDisplayDeviceInfo.XRes = 640
+	DisplayDisplayDeviceInfo.YRes = 480
+	DisplayDisplayDeviceInfo.ColorDepth = 16
+	DisplayDisplayDeviceInfo.RefreshRate = 0
+	DisplayDisplayDeviceInfo.NumPages = 0
+
+	Display.Open DisplayDisplayDeviceInfo
+	c.SetAttrib "Display.RefreshRate", Format$(Display.CalculatedRefreshRate, "0.000")
+
+	Set Sound = New SoundDevice
+	Sound.Name = "Sound"
+
+	Dim SoundSoundOutDeviceInfo As SoundDeviceInfo
+	SoundSoundOutDeviceInfo.Channels = 2
+	SoundSoundOutDeviceInfo.SamplesPerSecond = 22050
+	SoundSoundOutDeviceInfo.BitsPerSample = 16
+	Sound.Open SoundSoundOutDeviceInfo
+
+	Set Keyboard = New KeyboardDevice
+	Keyboard.Name = "Keyboard"
+
+	Dim KeyboardKeyboardDeviceInfo as KeyboardDeviceInfo
+	KeyboardKeyboardDeviceInfo.CollectionMode = ebPressesOnly
+	KeyboardKeyboardDeviceInfo.CapsLock = ebCapsLockOff
+	KeyboardKeyboardDeviceInfo.NumLock = ebNumLockOn
+	Keyboard.Open KeyboardKeyboardDeviceInfo
+	
+	Set Mouse = New MouseDevice
+	Mouse.Name = "Mouse"
+
+	Dim MouseMouseDeviceInfo as MouseDeviceInfo
+	MouseMouseDeviceInfo.OpenMode = ebMouseOpenModeDirect
+	MouseMouseDeviceInfo.CollectionMode = ebPressesOnly
+	MouseMouseDeviceInfo.ShowCursor = False
+	Mouse.Open MouseMouseDeviceInfo
+
+
+	SetOSThreadPriority 0
+
+End Sub
+
+
+
+'--------------------------------------------------------------------------
+' InitObjects
+'
+'--------------------------------------------------------------------------
+Sub InitObjects(c As Context)
+
+	Set SessionProc = New Procedure
+	SessionProc.Name = "SessionProc"
+	SessionProc.Tag = ""
+	SessionProc.Subroutine = "SessionProc_Run"
+
+	Set Subpixlst = New List
+	Subpixlst.Name = "Subpixlst"
+	Subpixlst.Tag = ""
+
+	'Initialization for Subpixlst
+	
+	Set Subpixlst.Order = New RandomOrder
+	Set Subpixlst.Deletion = NoDeletion
+	Subpixlst.ResetEveryRun = False
+
+	' Create the column headings
+	Subpixlst.AddAttrib "FillerPix"
+	Subpixlst.Filename = ""
+	Subpixlst.LoadMethod = ebLoadMethodEmbedded
+
+	Subpixlst.Load
+
+	Set Subpixlst.TerminateCondition = Cycles(1)
+	Set Subpixlst.ResetCondition = Samples(20)
+	Subpixlst.Reset
+	
+	Set TrialProc = New Procedure
+	TrialProc.Name = "TrialProc"
+	TrialProc.Tag = ""
+	TrialProc.Subroutine = "TrialProc_Run"
+
+	Set Pix1 = New Slide
+	Pix1.Name = "Pix1"
+	Pix1.Tag = ""
+	Pix1.TimingMode = ebTimingModeEvent
+	Pix1.PreRelease = Val("0")
+
+	Pix1.OnsetSync = 1
+	Pix1.OffsetSync = 0
+
+	Set Pix1_State = New SlideState
+	Pix1_State.Name = "Default"
+
+	InitSlideStateDefaults Pix1_State
+
+
+	Pix1.States.Add Pix1_State, "Default"
+
+
+	Set Pix1_SlideImage = New SlideImage
+	Pix1_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Pix1_SlideImage
+
+	Pix1_SlideImage.Width = "100%"
+	Pix1_SlideImage.Height = "100%"
+	Pix1.States.Item("Default").Objects.Add Pix1_SlideImage, "Image1"
+	Pix1.ActiveState = "Default"
+
+	Set Pix2 = New Slide
+	Pix2.Name = "Pix2"
+	Pix2.Tag = ""
+	Pix2.TimingMode = ebTimingModeEvent
+	Pix2.PreRelease = Val("0")
+
+	Pix2.OnsetSync = 1
+	Pix2.OffsetSync = 0
+
+	Set Pix2_State = New SlideState
+	Pix2_State.Name = "Default"
+
+	InitSlideStateDefaults Pix2_State
+
+
+	Pix2.States.Add Pix2_State, "Default"
+
+
+	Set Pix2_SlideImage = New SlideImage
+	Pix2_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Pix2_SlideImage
+
+	Pix2_SlideImage.Width = "100%"
+	Pix2_SlideImage.Height = "100%"
+	Pix2.States.Item("Default").Objects.Add Pix2_SlideImage, "Image1"
+	Pix2.ActiveState = "Default"
+
+	Set Pix3 = New Slide
+	Pix3.Name = "Pix3"
+	Pix3.Tag = ""
+	Pix3.TimingMode = ebTimingModeEvent
+	Pix3.PreRelease = Val("0")
+
+	Pix3.OnsetSync = 1
+	Pix3.OffsetSync = 0
+
+	Set Pix3_State = New SlideState
+	Pix3_State.Name = "Default"
+
+	InitSlideStateDefaults Pix3_State
+
+
+	Pix3.States.Add Pix3_State, "Default"
+
+
+	Set Pix3_SlideImage = New SlideImage
+	Pix3_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults Pix3_SlideImage
+
+	Pix3_SlideImage.Width = "100%"
+	Pix3_SlideImage.Height = "100%"
+	Pix3.States.Item("Default").Objects.Add Pix3_SlideImage, "Image1"
+	Pix3.ActiveState = "Default"
+
+	Set PreTargetPix = New Slide
+	PreTargetPix.Name = "PreTargetPix"
+	PreTargetPix.Tag = ""
+	PreTargetPix.TimingMode = ebTimingModeEvent
+	PreTargetPix.PreRelease = Val("0")
+
+	PreTargetPix.OnsetSync = 1
+	PreTargetPix.OffsetSync = 0
+
+	Set PreTargetPix_State = New SlideState
+	PreTargetPix_State.Name = "Default"
+
+	InitSlideStateDefaults PreTargetPix_State
+
+
+	PreTargetPix.States.Add PreTargetPix_State, "Default"
+
+
+	Set PreTargetPix_SlideImage = New SlideImage
+	PreTargetPix_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults PreTargetPix_SlideImage
+
+	PreTargetPix_SlideImage.Width = "100%"
+	PreTargetPix_SlideImage.Height = "100%"
+	PreTargetPix.States.Item("Default").Objects.Add PreTargetPix_SlideImage, "Image1"
+	PreTargetPix.ActiveState = "Default"
+
+	Set TargetPix = New Slide
+	TargetPix.Name = "TargetPix"
+	TargetPix.Tag = ""
+
+	Set TargetPixEchoClients = New EchoClientCollection
+	TargetPix.Duration = CLng("630")
+	TargetPix.TimingMode = ebTimingModeEvent
+	TargetPix.PreRelease = Val("0")
+
+	TargetPix.OnsetSync = 1
+	TargetPix.OffsetSync = 0
+
+	Set TargetPix_State = New SlideState
+	TargetPix_State.Name = "Default"
+
+	InitSlideStateDefaults TargetPix_State
+
+
+	TargetPix.States.Add TargetPix_State, "Default"
+
+
+	Set TargetPix_SlideImage = New SlideImage
+	TargetPix_SlideImage.Name = "Image1"
+
+	InitSlideImageDefaults TargetPix_SlideImage
+
+	TargetPix_SlideImage.Width = "100%"
+	TargetPix_SlideImage.Height = "100%"
+	TargetPix.States.Item("Default").Objects.Add TargetPix_SlideImage, "Image1"
+	TargetPix.ActiveState = "Default"
+
+	Set ITI = New TextDisplay
+	ITI.Name = "ITI"
+	ITI.Tag = ""
+
+	InitTextDisplayDefaults ITI
+
+	ITI.Text = ""
+	ITI.Duration = CLng("1000")
+	ITI.TimingMode = ebTimingModeEvent
+	ITI.PreRelease = Val("0")
+
+	ITI.OnsetSync = 1
+	ITI.OffsetSync = 0
+
+	Set Fixation = New TextDisplay
+	Fixation.Name = "Fixation"
+	Fixation.Tag = ""
+
+	InitTextDisplayDefaults Fixation
+
+	Fixation.Text = "+"
+	Fixation.Duration = CLng("1000")
+	Fixation.TimingMode = ebTimingModeEvent
+	Fixation.PreRelease = Val("0")
+
+	Fixation.OnsetSync = 1
+	Fixation.OffsetSync = 0
+
+	Set Feedback = New FeedbackDisplay
+	Feedback.Name = "Feedback"
+	Feedback.Tag = ""
+
+	Feedback.ACCDivisor = "1.0"
+	Feedback.ACCFormat = "Percent"
+	Feedback.RTDivisor = "1000.0"
+	Feedback.RTFormat = "###0.000"
+	Feedback.CorrectRTDivisor = "1000.0"
+	Feedback.CorrectRTFormat = "###0.000"
+	Feedback.IncorrectRTDivisor = "1000.0"
+	Feedback.IncorrectRTFormat = "###0.000"
+	Feedback.CollectNoRespACCStats = True
+	Feedback.Duration = CLng("1500")
+	Feedback.TimingMode = ebTimingModeEvent
+	Feedback.PreRelease = Val("0")
+
+	Feedback.OnsetSync = 1
+	Feedback.OffsetSync = 0
+
+	Set Feedback_State = New SlideState
+	Feedback_State.Name = "Correct"
+
+	InitSlideStateDefaults Feedback_State
+
+
+	Feedback.States.Add Feedback_State, "Correct"
+
+
+	Set Feedback_SlideSoundOut = New SlideSoundOut
+	Feedback_SlideSoundOut.Name = "SoundOut1"
+	Feedback_SoundBufferInfo.MaxLength = 5000
+	Feedback_SoundBufferInfo.VolumeControl = CLogical("no")
+	Feedback_SoundBufferInfo.PanControl = CLogical("no")
+	Set Feedback_SoundBuffer = Sound.CreateBuffer(Feedback_SoundBufferInfo)
+	Feedback_SlideSoundOut.Buffers.Add Feedback_SoundBuffer
+	Feedback.States.Item("Correct").Objects.Add Feedback_SlideSoundOut, "SoundOut1"
+
+	Feedback_SoundBuffer.Filename = "beep.wav"
+	Feedback_SoundBuffer.Load
+
+	InitSlideSoundBufferDefaults Feedback_SoundBuffer
+
+	Feedback_SoundBuffer.EndSoundAction = 0
+	Set Feedback_SoundBuffer = Nothing
+
+	Set Feedback_SlideText = New SlideText
+	Feedback_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Feedback_SlideText
+
+	Feedback_SlideText.Width = "100%"
+	Feedback_SlideText.Height = "100%"
+	Feedback_SlideText.BackStyle = "transparent"
+	Feedback.States.Item("Correct").Objects.Add Feedback_SlideText, "Text1"
+
+	Set Feedback_State = New SlideState
+	Feedback_State.Name = "Incorrect"
+
+	InitSlideStateDefaults Feedback_State
+
+
+	Feedback.States.Add Feedback_State, "Incorrect"
+
+
+	Set Feedback_SlideSoundOut = New SlideSoundOut
+	Feedback_SlideSoundOut.Name = "SoundOut1"
+	Feedback_SoundBufferInfo.MaxLength = 5000
+	Feedback_SoundBufferInfo.VolumeControl = CLogical("no")
+	Feedback_SoundBufferInfo.PanControl = CLogical("no")
+	Set Feedback_SoundBuffer = Sound.CreateBuffer(Feedback_SoundBufferInfo)
+	Feedback_SlideSoundOut.Buffers.Add Feedback_SoundBuffer
+	Feedback.States.Item("Incorrect").Objects.Add Feedback_SlideSoundOut, "SoundOut1"
+
+	Feedback_SoundBuffer.Filename = "wrong.wav"
+	Feedback_SoundBuffer.Load
+
+	InitSlideSoundBufferDefaults Feedback_SoundBuffer
+
+	Feedback_SoundBuffer.EndSoundAction = 0
+	Set Feedback_SoundBuffer = Nothing
+
+	Set Feedback_SlideText = New SlideText
+	Feedback_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Feedback_SlideText
+
+	Feedback_SlideText.Width = "100%"
+	Feedback_SlideText.Height = "100%"
+	Feedback_SlideText.BackStyle = "transparent"
+	Feedback.States.Item("Incorrect").Objects.Add Feedback_SlideText, "Text1"
+
+	Set Feedback_State = New SlideState
+	Feedback_State.Name = "NoResponse"
+
+	InitSlideStateDefaults Feedback_State
+
+
+	Feedback.States.Add Feedback_State, "NoResponse"
+
+
+	Set Feedback_SlideSoundOut = New SlideSoundOut
+	Feedback_SlideSoundOut.Name = "SoundOut1"
+	Feedback_SoundBufferInfo.MaxLength = 5000
+	Feedback_SoundBufferInfo.VolumeControl = CLogical("no")
+	Feedback_SoundBufferInfo.PanControl = CLogical("no")
+	Set Feedback_SoundBuffer = Sound.CreateBuffer(Feedback_SoundBufferInfo)
+	Feedback_SlideSoundOut.Buffers.Add Feedback_SoundBuffer
+	Feedback.States.Item("NoResponse").Objects.Add Feedback_SlideSoundOut, "SoundOut1"
+
+	Feedback_SoundBuffer.Filename = "ding.wav"
+	Feedback_SoundBuffer.Load
+
+	InitSlideSoundBufferDefaults Feedback_SoundBuffer
+
+	Feedback_SoundBuffer.EndSoundAction = 0
+	Set Feedback_SoundBuffer = Nothing
+
+	Set Feedback_SlideText = New SlideText
+	Feedback_SlideText.Name = "Text1"
+
+	InitSlideTextDefaults Feedback_SlideText
+
+	Feedback_SlideText.Width = "100%"
+	Feedback_SlideText.Height = "100%"
+	Feedback.States.Item("NoResponse").Objects.Add Feedback_SlideText, "Text1"
+
+	Set Feedback_State = New SlideState
+	Feedback_State.Name = "Pending"
+
+	InitSlideStateDefaults Feedback_State
+
+
+	Feedback.States.Add Feedback_State, "Pending"
+
+
+	Set endscreen = New TextDisplay
+	endscreen.Name = "endscreen"
+	endscreen.Tag = ""
+
+	Set endscreenEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults endscreen
+
+	endscreen.Text = "Thank you for completing this portion of the study.  \n\nPlease call the experimenter for further instruction.\n\n\n\n"
+	endscreen.FontName = "Arial Narrow"
+	endscreen.Duration = CLng("-1")
+	endscreen.TimingMode = ebTimingModeEvent
+	endscreen.PreRelease = Val("0")
+
+	endscreen.OnsetSync = 1
+	endscreen.OffsetSync = 0
+
+	Set BetweenScreen = New TextDisplay
+	BetweenScreen.Name = "BetweenScreen"
+	BetweenScreen.Tag = ""
+
+	Set BetweenScreenEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults BetweenScreen
+
+	BetweenScreen.Text = "You have now completed the practice trials.  \nIf you have any questions, please call the experimenter.  \n\nOtherwise, press the SPACE BAR to continu" &_ 
+				"e."
+	BetweenScreen.FontName = "Arial Narrow"
+	BetweenScreen.Duration = CLng("-1")
+	BetweenScreen.TimingMode = ebTimingModeEvent
+	BetweenScreen.PreRelease = Val("0")
+
+	BetweenScreen.OnsetSync = 1
+	BetweenScreen.OffsetSync = 0
+
+	Set Pixlst1 = New List
+	Pixlst1.Name = "Pixlst1"
+	Pixlst1.Tag = ""
+
+	'Initialization for Pixlst1
+	
+	Set Pixlst1.Order = New RandomOrder
+	Set Pixlst1.Deletion = NoDeletion
+	Pixlst1.ResetEveryRun = False
+
+	' Create the column headings
+	Pixlst1.AddAttrib "Pix1"
+	Pixlst1.AddAttrib "Pix2"
+	Pixlst1.AddAttrib "Pix3"
+	Pixlst1.AddAttrib "PreTargetPix"
+	Pixlst1.AddAttrib "TargetPix"
+	Pixlst1.AddAttrib "NumPixDisp"
+	Pixlst1.AddAttrib "Decision"
+	Pixlst1.AddAttrib "temppoints"
+	Pixlst1.AddAttrib "pix1duration"
+	Pixlst1.AddAttrib "pix12duration"
+	Pixlst1.AddAttrib "pix3duration"
+	Pixlst1.AddAttrib "pretarduration"
+	Pixlst1.Filename = ""
+	Pixlst1.LoadMethod = ebLoadMethodEmbedded
+
+	Pixlst1.Load
+
+	Set Pixlst1.TerminateCondition = Cycles(1)
+	Set Pixlst1.ResetCondition = Samples(100)
+	Pixlst1.Reset
+	
+	Set Instructions1 = New TextDisplay
+	Instructions1.Name = "Instructions1"
+	Instructions1.Tag = ""
+
+	Set Instructions1EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Instructions1
+
+	Instructions1.Text = "INSTRUCTIONS\n\nIn this videogame your task is to SHOOT any person who is \nholding a gun (the bad guys) by pressing Q on the keyboard. \n\nIf a perso" &_ 
+				"n is holding something other than a gun he is a good guy, \nand you should NOT SHOOT him by pressing the P on the keyboard.  \n\nPress the SPACE BAR f" &_ 
+				"or more instructions."
+	Instructions1.FontName = "Arial Narrow"
+	Instructions1.Duration = CLng("-1")
+	Instructions1.TimingMode = ebTimingModeEvent
+	Instructions1.PreRelease = Val("0")
+
+	Instructions1.OnsetSync = 1
+	Instructions1.OffsetSync = 0
+
+	Set WaitforInstruct = New TextDisplay
+	WaitforInstruct.Name = "WaitforInstruct"
+	WaitforInstruct.Tag = ""
+
+	Set WaitforInstructEchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults WaitforInstruct
+
+	WaitforInstruct.Text = "Please wait for the experimenter \nto give you instructions."
+	WaitforInstruct.FontName = "Arial Narrow"
+	WaitforInstruct.Duration = CLng("-1")
+	WaitforInstruct.TimingMode = ebTimingModeEvent
+	WaitforInstruct.PreRelease = Val("0")
+
+	WaitforInstruct.OnsetSync = 1
+	WaitforInstruct.OffsetSync = 0
+
+	Set Intructions1Pt2 = New TextDisplay
+	Intructions1Pt2.Name = "Intructions1Pt2"
+	Intructions1Pt2.Tag = ""
+
+	Set Intructions1Pt2EchoClients = New EchoClientCollection
+
+	InitTextDisplayDefaults Intructions1Pt2
+
+	Intructions1Pt2.Text = "Please keep your index or middle fingers rested \non the Q (shoot) and P (don't shoot) buttons.\n\nYou will have less than a second to make each decis" &_ 
+				"ion.  \nYou will receive points based on your performance.  \n\nThe first round of the game is for practice.  \n\nIf you have any questions, call the " &_ 
+				"experimenter now.  \n\nIf you are ready to begin the practice round, \npress the SPACE BAR."
+	Intructions1Pt2.FontName = "Arial Narrow"
+	Intructions1Pt2.Duration = CLng("-1")
+	Intructions1Pt2.TimingMode = ebTimingModeEvent
+	Intructions1Pt2.PreRelease = Val("0")
+
+	Intructions1Pt2.OnsetSync = 1
+	Intructions1Pt2.OffsetSync = 0
+
+	Set PixlstPractice1 = New List
+	PixlstPractice1.Name = "PixlstPractice1"
+	PixlstPractice1.Tag = ""
+
+	'Initialization for PixlstPractice1
+	
+	Set PixlstPractice1.Order = New RandomOrder
+	Set PixlstPractice1.Deletion = NoDeletion
+	PixlstPractice1.ResetEveryRun = False
+
+	' Create the column headings
+	PixlstPractice1.AddAttrib "Pix1"
+	PixlstPractice1.AddAttrib "Pix2"
+	PixlstPractice1.AddAttrib "Pix3"
+	PixlstPractice1.AddAttrib "PreTargetPix"
+	PixlstPractice1.AddAttrib "TargetPix"
+	PixlstPractice1.AddAttrib "NumPixDisp"
+	PixlstPractice1.AddAttrib "Decision"
+	PixlstPractice1.AddAttrib "temppoints"
+	PixlstPractice1.AddAttrib "pix1duration"
+	PixlstPractice1.AddAttrib "pix2duration"
+	PixlstPractice1.AddAttrib "pix3duration"
+	PixlstPractice1.AddAttrib "pretarduration"
+	PixlstPractice1.Filename = ""
+	PixlstPractice1.LoadMethod = ebLoadMethodEmbedded
+
+	PixlstPractice1.Load
+
+	Set PixlstPractice1.TerminateCondition = Samples(16)
+	Set PixlstPractice1.ResetCondition = Samples(100)
+	PixlstPractice1.Reset
+	
+
+End Sub
+
+
+'--------------------------------------------------------------------------
+' InitPackages
+'
+'--------------------------------------------------------------------------
+Sub InitPackages(c As Context)
+
+End Sub
+
+
+
+'--------------------------------------------------------------------------
+'--------------------------------------------------------------------------
+' UnInitDevices
+'--------------------------------------------------------------------------
+Sub UnInitDevices()
+	Display.Close
+	Set Display = Nothing
+	Sound.Close
+
+	Keyboard.Close
+	Set Keyboard = Nothing
+
+	Mouse.Close
+	Set Mouse = Nothing
+
+End Sub
+
+
+'--------------------------------------------------------------------------
+'--------------------------------------------------------------------------
+' UnInitPackages
+'--------------------------------------------------------------------------
+Sub UnInitPackages()
+End Sub
+
+
+'--------------------------------------------------------------------------
+' UnInitObjects
+'
+'--------------------------------------------------------------------------
+Sub UnInitObjects()
+
+	Set SessionProc = Nothing
+
+	Set Subpixlst = Nothing
+
+	Set TrialProc = Nothing
+
+	Set Pix1 = Nothing
+
+	Set Pix2 = Nothing
+
+	Set Pix3 = Nothing
+
+	Set PreTargetPix = Nothing
+
+	Set TargetPix = Nothing
+
+	Set TargetPixEchoClients = Nothing
+
+	Set ITI = Nothing
+
+	Set Fixation = Nothing
+
+	Set Feedback = Nothing
+
+	Set endscreen = Nothing
+
+	Set endscreenEchoClients = Nothing
+
+	Set BetweenScreen = Nothing
+
+	Set BetweenScreenEchoClients = Nothing
+
+	Set Pixlst1 = Nothing
+
+	Set Instructions1 = Nothing
+
+	Set Instructions1EchoClients = Nothing
+
+	Set WaitforInstruct = Nothing
+
+	Set WaitforInstructEchoClients = Nothing
+
+	Set Intructions1Pt2 = Nothing
+
+	Set Intructions1Pt2EchoClients = Nothing
+
+	Set PixlstPractice1 = Nothing
+
+
+End Sub
+
+
+'--------------------------------------------------------------------------
+' Main
+'
+'--------------------------------------------------------------------------
+Sub Main()
+
+	CreateDefaultPort
+
+	' Create and initialize the default context, data file,
+	' and provide global access to the context.
+	Dim c As Context
+	Set c = New Context
+	Set c.DataFile = New DataFile
+	c.PushNewFrame
+	Set ebContext = c
+
+	' Set the log level names
+	c.SetLogLevelName 1, "Session"
+	c.SetLogLevelName 2, "Block"
+	c.SetLogLevelName 3, "Trial"
+	c.SetLogLevelName 4, "SubTrial"
+	c.SetLogLevelName 5, "LogLevel5"
+	c.SetLogLevelName 6, "LogLevel6"
+	c.SetLogLevelName 7, "LogLevel7"
+	c.SetLogLevelName 8, "LogLevel8"
+	c.SetLogLevelName 9, "LogLevel9"
+	c.SetLogLevelName 10, "LogLevel10"
+
+	' Set standard logging items
+	ebContext.SetAttrib "Experiment", "shooter"
+	ebContext.SetAttrib "SessionDate", Date$
+	ebContext.SetAttrib "SessionTime", Time$
+	ebContext.SetAttrib "RandomSeed", PRNG.GetSeed()
+
+	If Basic.OS = ebWin32 Then
+		WinActivate "E-Run Experiment Window"
+	End If
+
+	' Get the StartupInfo
+	' Set default for GroupNumber
+	c.SetAttrib "Group", "1"
+
+
+	' Set the defaults for all of the StartupInfo
+	c.SetAttrib "Subject", "1"
+	c.SetAttrib "Session", "1"
+
+	Dim vAnswer As Variant
+StartupInfo_Begin:
+
+StartupInfoPrompt_Subject:
+	vAnswer = AskBox("Please enter the Subject Number (1-32767, 0=No Data Logging):", c.GetAttrib("Subject"))
+	If Not IsEmpty(vAnswer) then
+		If Not IsNumeric(vAnswer) then
+			MsgBox "Please enter an integer value"
+			GoTo StartupInfoPrompt_Subject
+		ElseIf CLng(vAnswer) < 0 Then
+			MsgBox "The value for Subject must not be less than 0"
+			GoTo StartupInfoPrompt_Subject
+		ElseIf CLng(vAnswer) > 32767 Then
+			MsgBox "The value for Subject must be not be greater than 32767"
+			GoTo StartupInfoPrompt_Subject
+		End If
+	Else
+		GoTo ExperimentAbort
+	End if
+
+	c.SetAttrib "Subject", CStr(vAnswer)
+
+StartupInfoPrompt_Session:
+	vAnswer = AskBox("Please enter the Session Number (1-32767):", c.GetAttrib("Session"))
+	If Not IsEmpty(vAnswer) then
+		If Not IsNumeric(vAnswer) then
+			MsgBox "Please enter an integer value"
+			GoTo StartupInfoPrompt_Session
+		ElseIf CLng(vAnswer) < 1 Then
+			MsgBox "The value for Session must not be less than 1"
+			GoTo StartupInfoPrompt_Session
+		ElseIf CLng(vAnswer) > 32767 Then
+			MsgBox "The value for Session must be not be greater than 32767"
+			GoTo StartupInfoPrompt_Session
+		End If
+	Else
+		GoTo ExperimentAbort
+	End if
+
+	c.SetAttrib "Session", CStr(vAnswer)
+
+	' Display the summary
+	Dim strSummary As String
+	strSummary = "Subject:    " & c.GetAttrib("Subject") & "\n"
+	strSummary = strSummary & "Session:    " & c.GetAttrib("Session") & "\n"
+	strSummary = strSummary & "\nContinue with the above startup info?"
+
+	Dim nSummaryAnswer As Integer
+	nSummaryAnswer = MsgBox(strSummary, ebYesNoCancel + ebQuestion, "Summary of Startup Info")
+	If nSummaryAnswer = ebNo Then
+		GoTo StartupInfo_Begin
+	ElseIf nSummaryAnswer = ebCancel Then
+		GoTo ExperimentAbort
+	End If
+
+
+	' Set the default Data Filename
+	c.DataFile.Filename = CStr(c.GetAttrib("Experiment")) & "-" & CStr(c.GetAttrib("Subject")) & "-" & CStr(c.GetAttrib("Session")) & ".txt"
+
+	' If we are logging data, then prompt to overwrite the data file if it exists
+	If CLng(c.GetAttrib("Subject")) <> 0 Then
+		If FileExists(c.DataFile.Filename) Then
+			If ebYes <> MsgBox("WARNING: The data file and/or recovery file already exists:\nFILE: " & c.DataFile.Filename & "\n\nDo you want to overwrite?", ebYesNo + ebQuestion) Then
+				GoTo ExperimentAbort
+			End If
+		End If
+	End If
+
+	' Initialize all system devices, packages, and objects
+	InitDevices c
+	InitPackages c
+	InitObjects c
+
+	' If we are logging data, then open the datafile
+	If CLng(c.GetAttrib("Subject")) <> 0 Then
+		c.DataFile.Open
+		c.LogHeader
+	End If
+
+	' Start the running of the Experiment
+	SessionProc.Run c
+
+	' Clean up the context and close the datafile
+	If CLng(c.GetAttrib("Subject")) <> 0 Then
+		c.DataFile.Close
+		' Attempt to convert the recovery file into a data file
+		Dim nConvert As Long
+		nConvert = c.DataFile.Convert(ebProgressSimple)
+		If nConvert = 0 Then
+			' Settings in E-Studio are set to not remove E-Recovery file
+		Else
+			' The datafile failed to convert!
+			MsgBox "ERROR: The datafile did not convert!\nFILE: " & c.DataFile.Filename & "\n\nIt is recommended that you recover your data with the E-Recovery utility"
+			MsgBox c.DataFile.GetLastErrorMessage()
+		End If
+	End If
+ExperimentFinish:
+
+	UnInitObjects
+
+	UnInitPackages
+	UnInitDevices
+
+ExperimentAbort:
+
+	' Clean up the context
+	c.PopFrame
+	Set c = Nothing
+	Set ebContext = Nothing
+
+	DestroyDefaultPort
+
+End Sub
+
+
+[DataSection_Subpixlst(1)]
+Weight	Nested	Procedure	FillerPix
+1			za.bmp
+1			zb.bmp
+1			zc.bmp
+1			zd.bmp
+1			ze.bmp
+1			zf.bmp
+1			zg.bmp
+1			zh.bmp
+1			zi.bmp
+1			zj.bmp
+1			zk.bmp
+1			zl.bmp
+1			zm.bmp
+1			zn.bmp
+1			zo.bmp
+1			zp.bmp
+1			zq.bmp
+1			zr.bmp
+1			zs.bmp
+1			zt.bmp\0
+
+[DataSection_Pixlst1(1)]
+Weight	Nested	Procedure	Pix1	Pix2	Pix3	PreTargetPix	TargetPix	NumPixDisp	Decision	temppoints	pix1duration	pix12duration	pix3duration	pretarduration
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zaba011.bmp	?	q	a	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zabu02w4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zawa90d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zawu02w4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbba05d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbba923.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbbu07p4.bmp	?	p	a	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbbu98p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwa012.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwa08d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwu06p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwu90c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcba03d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcbu90p5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcwa935.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcwu97p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdba022.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdbu03c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdwa94d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdwu95w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zeba045.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zebu10p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zewa921.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zewu96w1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfba90d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfbu92w1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfwa911.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfwu01p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgba072.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgba103.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgbu04p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgbu08w1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwa02d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwa06d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwu07w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwu99p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhba94d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhbu05c5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhwa03d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhwu05p5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziba08d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziba972.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	zibu01p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	zibu09p5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwa05d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwa073.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwu04p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwu08p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjba094.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjbu97c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjwa04d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjwu03c5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkba131.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkba99d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkbu11w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkbu16c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwa152.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwa97d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwu11p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwu13p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlba931.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlbu12p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlwa953.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlwu16c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmba96d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmbu91c4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmwa98d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmwu94c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znba11d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znbu94p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znwa16d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znwu19c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zoba125.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zobu96w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zowa195.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zowu91w3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpba95d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpbu99w5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpwa14d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpwu98w5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqba91d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqbu13p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqwa11d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqwu15w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrba141.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrba164.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrbu17w3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrbu93c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwa134.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwa964.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwu14p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwu92c2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zsba17d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zsbu95c2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zswa174.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zswu93c4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztba98d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztbu14p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztwa995.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztwu17p5.bmp	?	p	?	?	?	?	?\0
+
+[DataSection_PixlstPractice1(1)]
+Weight	Nested	Procedure	Pix1	Pix2	Pix3	PreTargetPix	TargetPix	NumPixDisp	Decision	temppoints	pix1duration	pix2duration	pix3duration	pretarduration
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zaba011.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zabu02w4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zawa90d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	za.bmp	zawu02w4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbba05d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbba923.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbbu07p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbbu98p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwa012.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwa08d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwu06p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zb.bmp	zbwu90c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcba03d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcbu90p5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcwa935.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zc.bmp	zcwu97p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdba022.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdbu03c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdwa94d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zd.bmp	zdwu95w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zeba045.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zebu10p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zewa921.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	ze.bmp	zewu96w1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfba90d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfbu92w1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfwa911.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zf.bmp	zfwu01p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgba072.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgba103.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgbu04p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgbu08w1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwa02d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwa06d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwu07w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zg.bmp	zgwu99p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhba94d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhbu05c5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhwa03d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zh.bmp	zhwu05p5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziba08d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziba972.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	zibu01p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	zibu09p5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwa05d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwa073.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwu04p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zi.bmp	ziwu08p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjba094.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjbu97c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjwa04d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zj.bmp	zjwu03c5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkba131.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkba99d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkbu11w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkbu16c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwa152.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwa97d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwu11p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zk.bmp	zkwu13p1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlba931.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlbu12p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlwa953.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zl.bmp	zlwu16c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmba96d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmbu91c4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmwa98d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zm.bmp	zmwu94c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znba11d5.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znbu94p4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znwa16d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zn.bmp	znwu19c3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zoba125.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zobu96w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zowa195.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zo.bmp	zowu91w3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpba95d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpbu99w5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpwa14d1.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zp.bmp	zpwu98w5.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqba91d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqbu13p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqwa11d4.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zq.bmp	zqwu15w2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrba141.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrba164.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrbu17w3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrbu93c1.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwa134.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwa964.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwu14p3.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zr.bmp	zrwu92c2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zsba17d3.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zsbu95c2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zswa174.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zs.bmp	zswu93c4.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztba98d2.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztbu14p2.bmp	?	p	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztwa995.bmp	?	q	?	?	?	?	?
+1	Subpixlst	TrialProc	\[FillerPix:1\]	\[FillerPix:2\]	\[FillerPix:3\]	zt.bmp	ztwu17p5.bmp	?	p	?	?	?	?	?\0
