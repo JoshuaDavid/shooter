@@ -1,11 +1,20 @@
+h1,
+h2 {
+    text-align: center;
+    margin: 0;
+}
 img {
-    height: 100x;
-    width: 100px;
+    max-width: 80%;
+    max-height: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 div.message {
     position: absolute;
     width: 30em;
-    height: 2em;
+    height: 3em;
     left: 50%;
     top: 50%;
     margin-left: -15em;
@@ -17,9 +26,52 @@ div.message {
 span.key {
     font-weight: bold;
 }
-span.key.shoot {
+.key.shoot {
     color: red;
 }
-span.key.noshoot {
+.key.noshoot {
     color: green;
+}
+div.game {
+    height: 60%;
+    position: relative;
+    border: 1px solid black;
+    background: lightblue;
+}
+div.remaining {
+    background: white;
+    text-align: right;
+    position: absolute;
+    left: 0em;
+    top: 0em;
+    padding: 0.1em;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+div.score {
+    background: white;
+    text-align: right;
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    padding: 0.1em;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+input#score,
+input#remaining {
+    text-align: right;
+    background: white;
+    color: black;
+    border: 0;
+    font-family: monospace;
+    font-weight: bold;
+    width: 6em;
+}
+div.wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+p {
+    margin: 0;
 }

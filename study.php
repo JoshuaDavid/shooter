@@ -13,18 +13,25 @@
         <script src="study.js"></script>
     </head>
     <body>
-        <h1>Shooter Task</h1>
-        <h2>Study</h2>
-        <div class="instructions">
-            <p>Press the <span class="shoot key">f</span> key to shoot the person.</p>
-            <p>Press the <span class="noshoot key">j</span> key to not shoot the person.</p>
-        </div>
-        <div class="game">
-            <div class="score">
-                <label for="score">Score</label>
-                <input type="number" disabled id="score" value="0" />
+        <div class="wrapper">
+            <h1>Shooter Task</h1>
+            <h2>Study</h2>
+            <div class="instructions">
+                <strong>Instructions</strong>
+                <p>Press the <button class="shoot key">f</button> key to shoot the person.</p>
+                <p>Press the <button class="noshoot key">j</button> key to not shoot the person.</p>
             </div>
-            <div class="viewer"></div>
+            <div class="game">
+                <div class="remaining">
+                    <label for="remaining">Remaining:</label>
+                    <input disabled id="remaining" value="" />
+                </div>
+                <div class="score">
+                    <label for="score">Score:</label>
+                    <input disabled id="score" value="0" />
+                </div>
+                <div class="viewer"></div>
+            </div>
         </div>
     </body>
 </html>
