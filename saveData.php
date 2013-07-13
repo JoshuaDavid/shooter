@@ -1,14 +1,15 @@
 <?
 include "./config.php";
-$mysqli = new mysqli(MYSQL_HOSTNAME, MYSQL_USERNAME);
+$mysqli = new mysqli(MYSQL_HOSTNAME, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE);
 $parameters = array(
-    "Participant_ID"    => 0,
-    "ShooterPicture"    => mysqli_real_escape_string($mysqli, $_POST["shooterPicture"]),
-    "ShooterBackground" => mysqli_real_escape_string($mysqli, $_POST["shooterBackground"]),
-    "ShooterRace"       => mysqli_real_escape_string($mysqli, $_POST["shooterRace"]),
-    "ShooterIsArmed"    => mysqli_real_escape_string($mysqli, $_POST["shooterIsArmed"]),
-    "Action"            => mysqli_real_escape_string($mysqli, $_POST["action"]),
-    "ExtraTime"         => intval($_POST["extraTime"])
+    "Participant_Confirmation"    => mysqli_real_escape_string($mysqli, $_POST["confirmation"]),
+    "ShooterPicture"              => mysqli_real_escape_string($mysqli, $_POST["shooterPicture"]),
+    "ShooterPicture"              => mysqli_real_escape_string($mysqli, $_POST["shooterPicture"]),
+    "ShooterBackground"           => mysqli_real_escape_string($mysqli, $_POST["shooterBackground"]),
+    "ShooterRace"                 => mysqli_real_escape_string($mysqli, $_POST["shooterRace"]),
+    "ShooterIsArmed"              => mysqli_real_escape_string($mysqli, $_POST["shooterIsArmed"]),
+    "Action"                      => mysqli_real_escape_string($mysqli, $_POST["action"]),
+    "ExtraTime"                   => intval($_POST["extraTime"])
 );
 $query = "INSERT INTO `GIS`.`Responses`\n(";
 foreach($parameters as $name => $value) {

@@ -9,6 +9,8 @@ $(document).ready(function() {
     var score = 0;
     var shooterIsArmed = null;
     var trials_done = 0;
+    
+    //Flags
     var MIN_COOLDOWN_PERIOD = 500;
     var MAX_COOLDOWN_PERIOD = 3000;
     var BACKGROUND_DISPLAY_TIME = 1000;
@@ -19,9 +21,14 @@ $(document).ready(function() {
     var BONUS_FOR_SHOOTING_ARMED = 10;
     var BONUS_FOR_NOT_SHOOTING_UNARMED = 5;
     var PENALTY_FOR_TIMEOUT = 10;
-    var NUMBER_OF_TRIALS = 25;
+    var NUMBER_OF_TRIALS = 8;
     var PLAY_SOUNDS = true;
+    var CONFIRMATION_CODE = getConfirmationCode();
+    var SEND_TO_SERVER = true;
     var _shooterTimeout = null;
+
+    // Repeated for every potential shooter
+    var message = {confirmation: CONFIRMATION_CODE};
     var $fixation = $('<img src="./images/fixation.jpg" alt="cooldown" />')
     var $background = $('<img/>');
     var $person = $('<img/>');
@@ -32,9 +39,16 @@ $(document).ready(function() {
     var gunshot = $('<audio src="./sounds/gunshot.wav"/>')[0];
     var wrong = $('<audio src="./sounds/wrong.wav"/>')[0];
     var timeout = $('<audio src="./sounds/timeout.wav"/>')[0];
-    var message = {};
     $('.viewer').append($fixation).append($background).append($person).append($correct).append($incorrect);
+    $('input#remaining').val(NUMBER_OF_TRIALS);
     $(document).on("keypress", handleKeyPress);
+    function getConfirmationCode() {
+        var cc = "";
+        for(var i = 0; i < 0x20; i++) {
+            cc += randint(0, 0xF).toString(0x10);
+        }
+        return cc;
+    }
     function getPotentialShooters() {
         var potentialShooters = [
             "http://localhost/shooter/images/za.jpg",
@@ -202,7 +216,7 @@ $(document).ready(function() {
         var potentialShooter = getRandomShooter();
         var background = potentialShooter.background;
         var person = potentialShooter.src;
-        var remaining = NUMBER_OF_TRIALS - trials_done;
+        var remaining = NUMBER_OF_TRIALS - trials_done - 1;
         $('input#remaining').val(remaining);
         hasShot = false;
         hasNotShot = false;
@@ -302,6 +316,11 @@ $(document).ready(function() {
         if(trials_done < NUMBER_OF_TRIALS) {
             var cooldown_period = randint(MIN_COOLDOWN_PERIOD, MAX_COOLDOWN_PERIOD);
             setTimeout(showShooter, cooldown_period);
+        }
+        else {
+            $.post('./demographics.php', message).success(function(response) {
+                $('html').html(response);
+            });
         }
     }
     function randint(min, max) {
