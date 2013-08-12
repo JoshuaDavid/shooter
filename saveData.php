@@ -4,7 +4,6 @@ $mysqli = new mysqli(MYSQL_HOSTNAME, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATAB
 $parameters = array(
     "Participant_Confirmation"    => mysqli_real_escape_string($mysqli, $_POST["confirmation"]),
     "ShooterPicture"              => mysqli_real_escape_string($mysqli, $_POST["shooterPicture"]),
-    "ShooterPicture"              => mysqli_real_escape_string($mysqli, $_POST["shooterPicture"]),
     "ShooterBackground"           => mysqli_real_escape_string($mysqli, $_POST["shooterBackground"]),
     "ShooterRace"                 => mysqli_real_escape_string($mysqli, $_POST["shooterRace"]),
     "ShooterIsArmed"              => mysqli_real_escape_string($mysqli, $_POST["shooterIsArmed"]),

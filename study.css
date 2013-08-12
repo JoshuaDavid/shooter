@@ -25,6 +25,8 @@ div.message {
 }
 span.key {
     font-weight: bold;
+    border: 3px outset lightgray;
+    padding: 0.05em 0.25em;
 }
 .key.shoot {
     color: red;
@@ -74,4 +76,21 @@ div.wrapper {
 }
 p {
     margin: 0;
+}
+.hidden {
+    display: none;
+}
+div.instructions {
+    text-align: center;
+}
+div.instructions p {
+    margin: 0.5em 0em;
+}
+div.countdown {
+    height: 5em;
+    width: 5em;
+    line-height: 5em;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 36pt;
 }

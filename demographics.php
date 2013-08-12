@@ -32,7 +32,7 @@
                 <input type="checkbox" id="ethnicity-other" name="ethnicity" value="other" /><label for="ethnicity-other">Other.</label><br />
             </div>
             <div class="politics question">
-                <label for="politics">On a scale of 1 to 7, where 1 is more conservative and 10 is more liberal, where would you place yourself</label><br />
+                <label for="politics">On a scale of 1 to 7, where 1 is more conservative and 7 is more liberal, where would you place yourself</label><br />
                 <input type="range" min="1" max="7" step="0.1" name="politics" id="politics" />
             </div>
             <input type="hidden" name="confirmation" value="<? echo $_POST["confirmation"];?>" />

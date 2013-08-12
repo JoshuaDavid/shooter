@@ -7,6 +7,7 @@ $parameters = array(
     "BornInUS" => mysqli_real_escape_string($mysqli, $_POST["borninus"]),
     "Ethnicity" => mysqli_real_escape_string($mysqli, $_POST["ethnicity"]),
     "Politics" => mysqli_real_escape_string($mysqli, $_POST["politics"]),
+    "Age" => mysqli_real_escape_string($mysqli, $_POST["age"]),
 );
 $query = "INSERT INTO `GIS`.`Participants`\n(";
 foreach($parameters as $name => $value) {

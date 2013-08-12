@@ -10,19 +10,14 @@
         <title>Shooter Task -- Study</title>
         <link rel="stylesheet" type="text/css" href="./study.css" />
         <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="/js/q.js"></script>
         <script src="study.js"></script>
     </head>
     <body>
+        <h1>Shooter Task</h1>
         <div class="wrapper">
-            <h1>Shooter Task</h1>
-            <h2>Study</h2>
-            <div class="instructions">
-                <strong>Instructions</strong>
-                <p>Press the <button class="shoot key">f</button> key to shoot the person.</p>
-                <p>Press the <button class="noshoot key">j</button> key to not shoot the person.</p>
-            </div>
-            <div class="game">
-                <div class="remaining">
+            <div class="game hidden">
+                <div class="remaining hidden">
                     <label for="remaining">Remaining:</label>
                     <input disabled id="remaining" value="" />
                 </div>
