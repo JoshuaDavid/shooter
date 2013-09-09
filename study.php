@@ -10,7 +10,7 @@
         <title>Shooter Task -- Study</title>
         <link rel="stylesheet" type="text/css" href="./study.css" />
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="/js/q.js"></script>
+        <script src="./js/q.js"></script>
         <script src="study.js"></script>
     </head>
     <body>
